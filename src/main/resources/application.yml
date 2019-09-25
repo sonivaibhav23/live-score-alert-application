@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: group-id
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    topic-name: scores
+  datasource:
+    url: jdbc:h2:file:./temp/test
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+        genrate_statistics: false
+  h2:
+    console:
+      enabled: true
+      path: /h2
